@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-navy: #032147;
+  --color-muted: #888888;
+  --color-blue: #209dd7;
+  --color-accent: #ecad0a;
+  --color-purple: #753991;
+  --font-sans: var(--font-geist-sans);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #f4f7fb;
+  color: #032147;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.dark body {
+  background: #0a1628;
+  color: #e8eef6;
+}

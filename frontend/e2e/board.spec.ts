@@ -40,6 +40,25 @@ test.describe("kanban board", () => {
     await expect(page.getByTestId("card-brand")).toHaveCount(0);
   });
 
+  test("toggles dark mode and persists it", async ({ page }) => {
+    await page.goto("/");
+    const toggle = page.getByTestId("theme-toggle");
+    const html = page.locator("html");
+    await expect(toggle).toHaveAttribute("aria-checked", "false");
+    await expect(html).not.toHaveClass(/dark/);
+
+    await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-checked", "true");
+    await expect(html).toHaveClass(/dark/);
+
+    await page.reload();
+    await expect(page.locator("html")).toHaveClass(/dark/);
+    await expect(page.getByTestId("theme-toggle")).toHaveAttribute(
+      "aria-checked",
+      "true",
+    );
+  });
+
   test("drags a card to another column", async ({ page }) => {
     await page.goto("/");
     const card = page.getByTestId("card-brand");

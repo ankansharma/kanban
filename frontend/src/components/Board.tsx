@@ -14,6 +14,7 @@ import {
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { Column } from "./Column";
+import { ThemeToggle } from "./ThemeToggle";
 import {
   addCard,
   deleteCard,
@@ -94,23 +95,28 @@ export function Board() {
   }
 
   if (!ready) {
-    return <div className="min-h-full bg-[#f4f7fb]" data-testid="board" />;
+    return (
+      <div className="min-h-full bg-[#f4f7fb] dark:bg-[#0a1628]" data-testid="board" />
+    );
   }
 
   return (
     <div className="flex min-h-full flex-col" data-testid="board">
-      <header className="border-b border-slate-200 bg-white">
+      <header className="border-b border-slate-200 bg-white dark:border-slate-700 dark:bg-[#0f1e33]">
         <div className="mx-auto flex max-w-[1600px] items-end justify-between gap-6 px-6 py-6">
           <div>
             <p className="text-sm font-medium text-blue">Project board</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-tight text-navy">
+            <h1 className="mt-1 text-3xl font-semibold tracking-tight text-navy dark:text-slate-100">
               Launch workspace
             </h1>
             <p className="mt-2 max-w-xl text-sm text-muted">
               One board. Five columns. Move work forward.
             </p>
           </div>
-          <div className="hidden h-1 w-32 rounded-full bg-accent sm:block" />
+          <div className="flex items-center gap-4">
+            <div className="hidden h-1 w-32 rounded-full bg-accent sm:block" />
+            <ThemeToggle />
+          </div>
         </div>
       </header>
       <DndContext
@@ -133,8 +139,8 @@ export function Board() {
         </div>
         <DragOverlay>
           {activeCard ? (
-            <article className="rounded-lg border border-slate-200 bg-white p-3 shadow-lg">
-              <h3 className="text-sm font-semibold text-navy">
+            <article className="rounded-lg border border-slate-200 bg-white p-3 shadow-lg dark:border-slate-700 dark:bg-[#16273f]">
+              <h3 className="text-sm font-semibold text-navy dark:text-slate-100">
                 {activeCard.title}
               </h3>
               {activeCard.details ? (

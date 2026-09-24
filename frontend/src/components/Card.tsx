@@ -29,7 +29,7 @@ export function Card({ card, onDelete }: CardProps) {
       ref={setNodeRef}
       style={style}
       data-testid={card.id}
-      className={`group relative rounded-lg border border-slate-200 bg-white p-3 shadow-sm ${
+      className={`group relative rounded-lg border border-slate-200 bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-[#16273f] ${
         isDragging ? "opacity-40" : "cursor-grab active:cursor-grabbing"
       }`}
       {...attributes}
@@ -37,7 +37,9 @@ export function Card({ card, onDelete }: CardProps) {
     >
       <div className="flex items-start gap-2">
         <div className="min-w-0 flex-1">
-          <h3 className="text-sm font-semibold text-navy">{card.title}</h3>
+          <h3 className="text-sm font-semibold text-navy dark:text-slate-100">
+            {card.title}
+          </h3>
           {card.details ? (
             <p className="mt-1 text-sm leading-relaxed text-muted">
               {card.details}
@@ -50,7 +52,7 @@ export function Card({ card, onDelete }: CardProps) {
           data-testid={`delete-card-${card.id}`}
           onPointerDown={(e) => e.stopPropagation()}
           onClick={() => onDelete(card.id)}
-          className="rounded p-1 text-muted transition-colors hover:bg-slate-100 hover:text-navy focus:outline-none focus:ring-2 focus:ring-blue/40"
+          className="rounded p-1 text-muted transition-colors hover:bg-slate-100 hover:text-navy focus:outline-none focus:ring-2 focus:ring-blue/40 dark:hover:bg-slate-700 dark:hover:text-slate-100"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

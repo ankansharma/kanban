@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --color-navy: #032147;
   --color-muted: #888888;
@@ -18,4 +20,9 @@ body {
   background: #f4f7fb;
   color: #032147;
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.dark body {
+  background: #0a1628;
+  color: #e8eef6;
 }
